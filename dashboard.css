@@ -1,0 +1,17 @@
+
+#main{
+    background-image: url('https://img.magnific.com/free-vector/back-school-phrase-with-chalkboard-typography-lettering-yellow_1314-2524.jpg?semt=ais_hybrid&w=740&q=80');
+    background-color: rgb(255, 255, 255);
+    width: 1400px;
+    height: 650px;
+}
+#skill_rise h1{
+    justify-content: center;
+    display: flex;
+    height: 60px;
+    font-size: 60px;
+}
+#a button{
+    background-color: greenyellow;
+    color: white;
+}

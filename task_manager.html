@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Admission Portal</title>
+    <style>
+        :root { --primary: #4a90e2; --secondary: #27ae60; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 40px; display: flex; justify-content: center; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 800px; }
+        h2 { color: #333; text-align: center; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 5px rgba(74,144,226,0.3); }
+        .full-width { grid-column: span 2; }
+        button { padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; color: white; }
+        .btn-submit { background: var(--secondary); grid-column: span 2; }
+        .btn-submit:hover { background: #219150; }
+        .btn-view { background: var(--primary); display: block; text-align: center; text-decoration: none; margin-top: 15px; padding: 12px; border-radius: 8px; color: white; }
+        .btn-view:hover { background: #357abd; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Student Admission Form</h2>
+<form action="/submit_admission" method="POST" class="grid-form">
+    <input type="text" name="name" placeholder="Student Name" required>
+    <input type="text" name="dad_name" placeholder="Father Name" required>
+    <input type="text" name="father_profession" placeholder="Profession">
+    <input type="text" name="mother_name" placeholder="Mother Name">
+    <input type="text" name="contact" placeholder="Contact">
+    <input type="text" name="emergency_phone" placeholder="Emergency Phone">
+    <input type="text" name="course" placeholder="Course">
+    <input type="text" name="hobby" placeholder="Hobby">
+    <input type="text" name="weight" placeholder="Weight">
+    <input type="text" name="height" placeholder="Height">
+    <input type="date" name="dob">
+    <input type="text" name="blood_group" placeholder="Blood Group">
+    <input type="date" name="admission_date" class="full-width" required>
+    
+    <button type="submit" class="btn-submit">Complete Admission</button>
+</form>
+    
+    <a href="/list" class="btn-view">View All Admissions</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Rise | Student Admission</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #071b2d;
+            --blue: #123f67;
+            --gold: #d9a928;
+            --gold-light: #f5d36b;
+            --green: #198754;
+            --green-dark: #126b41;
+            --white: #ffffff;
+            --light: #f3f6f9;
+            --text: #17212b;
+            --muted: #6c757d;
+            --border: #dce3e9;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #ffffff 0%, #edf2f6 45%, #dce5ec 100%);
+            min-height: 100vh;
+            color: var(--text);
+            padding: 35px 15px;
+        }
+
+        /* MAIN CONTAINER */
+        .page {
+            width: 100%;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--navy), var(--blue));
+            border-radius: 22px 22px 0 0;
+            padding: 25px 30px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            width: 145px;
+            height: 145px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 0 0 4px var(--gold),
+                        0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+.header p {
+    color: var(--gold-light);
+    font-size: 15px;
+    line-height: 1.7;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.header p span {
+    display: block;
+}
+
+        /* FORM CARD */
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 0 0 22px 22px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-title h2 {
+            color: var(--navy);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .form-title p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #e9eef2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--blue);
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            width: 10px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* GRID */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field.full {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #33414d;
+            margin-bottom: 7px;
+        }
+
+        label .required {
+            color: #dc3545;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fbfcfd;
+            color: var(--text);
+            font-size: 15px;
+            outline: none;
+            transition: 0.25s ease;
+        }
+
+        input:hover,
+        select:hover {
+            border-color: #b7c5d0;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--gold);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(217, 169, 40, 0.15);
+        }
+
+        input::placeholder {
+            color: #9aa5ae;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            border: none;
+            padding: 16px 20px;
+            border-radius: 11px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.25s ease;
+        }
+
+        .btn-submit {
+            color: white;
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
+            box-shadow: 0 6px 15px rgba(25, 135, 84, 0.25);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 20px rgba(25, 135, 84, 0.35);
+        }
+
+        .btn-view {
+            color: white;
+            background: linear-gradient(135deg, var(--blue), var(--navy));
+            box-shadow: 0 6px 15px rgba(18, 63, 103, 0.25);
+        }
+
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 20px rgba(18, 63, 103, 0.35);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #74808a;
+            font-size: 13px;
+        }
+
+        .footer strong {
+            color: var(--blue);
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .header {
+                padding: 22px 15px;
+            }
+
+            .logo {
+                width: 115px;
+                height: 115px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: span 1;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <img
+            src="/static/skill-rise-logo.png"
+            alt="Skill Rise Education System"
+            class="logo"
+        >
+
+        <h1>SKILL RISE</h1>
+
+<p>
+    EDUCATION SYSTEM<br>
+    <span> SKILLS ARE FREEDOM</span>
+</p>
+    </div>
+
+
+    <!-- FORM CARD -->
+    <div class="card">
+
+        <div class="form-title">
+            <h2>Student Admission Form</h2>
+            <p>Please enter the student's information carefully.</p>
+        </div>
+
+
+        <form action="/submit_admission" method="POST">
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="section">
+
+                <div class="section-title">
+                    <span></span>
+                    Personal Information
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>
+                            Student Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter student name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>
+                            Father Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="dad_name"
+                            placeholder="Enter father name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Father Profession</label>
+
+                        <input
+                            type="text"
+                            name="father_profession"
+                            placeholder="Enter profession"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Mother Name</label>
+
+                        <input
+                            type="text"
+                            name="mother_name"
+                            placeholder="Enter mother name"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Contact Number</label>
+
+                        <input
+                            type="text"
+                            name="contact"
+                            placeholder="03XX-XXXXXXX"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Emergency Phone</label>
+
+                        <input
+                            type="text"
+                            name="emergency_phone"
+                            placeholder="Emergency contact"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- EDUCATION -->
+            <div class="section">
+
+                <div class="section-title">
+                    <span></span>
+                    Education & Skills
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Course</label>
+
+                        <input
+                            type="text"
+                            name="course"
+                            placeholder="Enter course"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Hobby</label>
+
+                        <input
+                            type="text"
+                            name="hobby"
+                            placeholder="Enter hobby"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- PHYSICAL INFORMATION -->
+            <div class="section">
+
+                <div class="section-title">
+                    <span></span>
+                    Student Details
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Date of Birth</label>
+
+                        <input
+                            type="date"
+                            name="dob"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Blood Group</label>
+
+                        <select name="blood_group">
+
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="field">
+                        <label>Weight</label>
+
+                        <input
+                            type="text"
+                            name="weight"
+                            placeholder="e.g. 45 kg"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Height</label>
+
+                        <input
+                            type="text"
+                            name="height"
+                            placeholder="e.g. 150 cm"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ADMISSION -->
+            <div class="section">
+
+                <div class="section-title">
+                    <span></span>
+                    Admission Information
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field full">
+
+                        <label>
+                            Admission Date <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            name="admission_date"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-submit"
+                >
+                    ✓ Complete Admission
+                </button>
+
+
+                <a
+                    href="/list"
+                    class="btn btn-view"
+                >
+                    👁 View All Admissions
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <strong>SKILL RISE</strong> • Learn • Build • Innovate • Succeed
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f8f8f8; }
+        .paid { color: green; font-weight: bold; }
+        .pending { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Fee Management System</h2>
+    <table id="fee-table">
+        <thead>
+            <tr><th>ID</th><th>Student ID</th><th>Name</th><th>Due Date</th><th>Amount</th><th>Status</th><th>Action</th></tr>
+        </thead>
+        <tbody id="fee-body"></tbody>
+    </table>
+
+    <script>
+        async function loadFees() {
+            const res = await fetch('/get-all-fees');
+            const data = await res.json();
+            const body = document.getElementById('fee-body');
+            body.innerHTML = '';
+            
+            data.fees.forEach(f => {
+                const statusClass = f[5] === 'Paid' ? 'paid' : 'pending';
+                body.innerHTML += `<tr>
+                    <td class="${statusClass}">${f[5]}</td>
+                    <td>${f[5] === 'Pending' ? `<button onclick="updateStatus(${f[0]})">Mark Paid</button>` : 'Done'}</td>
+                </tr>`;
+            });
+        }
+
+        async function updateStatus(fid) {
+            const formData = new FormData();
+            formData.append('status', 'Paid');
+            await fetch(`/update-status/${fid}`, { method: 'POST', body: formData });
+            loadFees(); // Table refresh
+        }
+
+        loadFees();
+    </script>
+</body>
+</html>
